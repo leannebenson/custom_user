@@ -13,7 +13,7 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            new_user = BaseUser.objects.create_user(username=data.get("username"), password=data.get("password")),
+            new_user = BaseUser.objects.create_user(username=data.get("username"), password=data.get("password"), display_name=data.get("display_name"))
             login(request, new_user)
             return HttpResponseRedirect(reverse("home"))
     
